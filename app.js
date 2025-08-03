@@ -1,9 +1,12 @@
+//invoco express
 const express = require('express');
 const app = express();
 const port = 3000;
 
+//configuro gli asset statici
 app.use(express.static('public'));
 
+//creo un array di oggetti 
 const posts = [
   {
     title: 'Mare',
@@ -37,14 +40,17 @@ const posts = [
   },
 ]
 
+//definisco la rotta principale
 app.get('/', (req, res) => {
-  res.send('Server del mio blog')
+  res.send('Server del mio blog');
 })
 
+//definisco la rotta /bacheca che restituisce l'array con tutti i post
 app.get('/bacheca', (req, res) => {
-  res.json(posts)
+  res.json(posts);
 })
 
+//il server resta in ascolto sulla porta definita
 app.listen((port), () => {
   console.log(`Server in ascolto alla porta ${port}`);
 })
